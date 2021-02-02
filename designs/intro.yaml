@@ -1,0 +1,11 @@
+
+set:
+  E6024
+title:
+  introduction
+stacks:
+  a: mini-grey yellow-block ramp{0,0} grey-block orange-block red-spiral{0,big,down}
+  b: mini-grey grey-block ramp{0,1} cyan-block ramp{1,0}
+  c: mini-grey yellow-block blue-block mini-purple ramp{1,1} green-block red-spiral{0,small,down}
+  d: red-spiral{0,mid,down} white-clicker mini-purple
+
