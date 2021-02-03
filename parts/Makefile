@@ -6,6 +6,6 @@ _%.png : %.scad .options
 	# cp `awk '{print $$NF;}' $<` $(patsubst %.param,%.scad,$<)
 
 %.png : _%.png
-	convert $< -scale 240x-1 $@
+	convert $< -scale 800x800 $@
 
 all: $(PNGS)
