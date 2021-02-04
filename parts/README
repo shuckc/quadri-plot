@@ -1,6 +1,8 @@
 Quadrilla parts
 ===============
 
+Blocks
+------
 The shorted 'mini' pieces are grey and purple. Both are square, 12mm high, sides 44mm.
 
 The grey piece:
@@ -22,30 +24,40 @@ Yellow block
   - stud accepting recess is id 31mm, depth 9mm to shelf, then reduces down to 19mm
     all chamfered at 2mm
 
-Marbles
-  - sphere 16.5mm diameter
+![blocks render](blocks.png)
 
-
-Colours
- - sample from instuction PDFs
     mini  wood
     mini  purple
-    block blue
-    block green
-    block orange
-    block red
-    block cyan
-    block wood
-    block yellow
-    catcher orange
-    staircase blue
-    staircase oragne
-    staircase green
-    tower red
-    spiral red
+    BlueBlock
+    GreenBlock
+    OrangeBlock
+    RedBlock
+    TealBlock
+    WhiteBlock (unpainted wood)
+    YellowBlock
+
     clacker green
     clacker red
     clacker orange
     clacker blue
     clacker white
+
+Ramps
+-----
+Ramps connect between one stack and another. They determine or constrain the distances/placement of the stacks
+
+* semicircle 2
+* semicircle 3
+* s-curve
+* spiral
+
+Special
+-------
+* musical staircase
+* musical cylinder staircase
+* orange marble catcher
+* flag entry
+* marble - sphere 16.5mm diameter
+
+
 
