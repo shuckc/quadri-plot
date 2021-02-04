@@ -18,9 +18,19 @@ translate([100,300,0]) ExitAcross();
 translate([200,300,0]) ExitWhite();
 translate([300,300,0]) WhiteBlock();
 
-translate([100,400,0]) ExitAcrossHalf();
+translate([100,400,0]) ExitBack();
 translate([200,400,0]) ExitBlue();
 translate([300,400,0]) BlueBlock();
+
+translate([200,500,0]) ExitGreen();
+translate([300,500,0]) GreenBlock();
+
+translate([200,600,0]) ExitTeal();
+translate([300,600,0]) TealBlock();
+
+translate([300,700,0]) ControlBlock();
+
+
 
 // basic block outer
 module BaseBlock(height=60,side=44,chamfer=2) {
@@ -41,7 +51,7 @@ module TopEntry(height=60) {
         translate([0,0,height-30])
             cylinder(h=30,d=19);
     }
-};
+}
 
 module ExitPart() {
     union() {
@@ -49,8 +59,8 @@ module ExitPart() {
         sphere(d=19);
     translate([0,0,-10])
         cylinder(h=40,d=19);
-    };
-};
+    }
+}
 
 module ExitOrange() {
     union() {
@@ -71,7 +81,7 @@ module ExitYellow() {
         TopEntry();
         ExitSide();
     }
-};
+}
 
 module OrangeBlock() {
     color("orange")
@@ -84,13 +94,13 @@ module OrangeBlock() {
 module ExitAcross() {
     union() {
         translate([0,0,6])
-        rotate ([0,90,0])
+        rotate ([90,90,0])
         translate([0,0,-40])
         cylinder(h=80,d=19);
     }
 }
 
-module ExitAcrossHalf() {
+module ExitBack() {
     union() {
         translate([0,0,6])
         rotate ([0,90,0])
@@ -104,7 +114,7 @@ module ExitWhite() {
         ExitOrange();
         ExitAcross();
     }
-};
+}
 
 module WhiteBlock() {
     color("Wheat")
@@ -134,7 +144,7 @@ module ExitRed() {
         TopEntry();
         ExitSides();
     }
-};
+}
 
 module RedBlock() {
     color("red")
@@ -144,14 +154,17 @@ module RedBlock() {
     }
 }
 
+module ExitBottom() {
+    translate([0,0,-24]) ExitPart();
+}
+
 module ExitBlue() {
     union() {
         ExitYellow();
-        translate([0,0,-24])
-        ExitPart();
-        ExitAcrossHalf();
+        ExitBottom();
+        ExitBack();
     }
-};
+}
 
 module BlueBlock() {
     color("blue")
@@ -160,3 +173,48 @@ module BlueBlock() {
         ExitBlue();
     }
 }
+
+module ExitGreen() {
+    union() {
+        ExitYellow();
+        ExitBottom();
+        ExitAcross();
+    }
+}
+module GreenBlock() {
+    color("DarkGreen")
+    difference() {
+        BaseBlock();
+        ExitGreen();
+    }
+}
+
+module ExitTeal() {
+    union() {
+        ExitYellow();
+        ExitAcross();
+    }
+}
+module TealBlock() {
+    color("Teal")
+    difference() {
+        BaseBlock();
+        ExitTeal();
+    }
+}
+
+module ExitControlBlock() {
+    union() {
+        ExitGreen();
+    }
+}
+
+module ControlBlock() {
+    color("White")
+    difference() {
+        BaseBlock();
+        ExitControlBlock();
+        // orange control knobs
+    }
+}
+
