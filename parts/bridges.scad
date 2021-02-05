@@ -1,14 +1,14 @@
 
 use <blocks.scad>;
 
-translate([300,0,100]) Curve2();
-translate([300,0,100]) ProjectAlongArc(angle=120) Curve2();
-translate([300,0,100]) ProjectAlongArc(angle=2*120) Curve2();
+translate([500,200,44]) Curve2();
+translate([500,200,44]) ProjectAlongArc(angle=120) Curve2();
+translate([500,200,44]) ProjectAlongArc(angle=2*120) Curve2();
 
-translate([300,0,0]) Curve3();
-translate([300,0,0]) ProjectAlongArc(angle=180) Curve3();
+translate([500,200,0]) Curve3();
+translate([500,200,0]) ProjectAlongArc(angle=180) Curve3();
 
-translate([500,0,0]) SCurve();
+translate([270,200,88]) SCurve();
 
 module ProjectAlongArc(angle=60, obj) {
     translate([-230,0,0])
