@@ -30,17 +30,40 @@ translate([300,600,0]) TealBlock();
 
 translate([300,700,0]) ControlBlock();
 
-
+translate([400,0,0]) MiniPurpleBlock();
+translate([400,100,0]) MiniWhiteBlock();
 
 // basic block outer
+module BaseCube(height=60,side=44,chamfer=2) {
+    translate([0,0,height/2])
+        cube([side,side,height], center=true);
+}
+
+module BaseStud() {
+    translate([0,0,-7]) cylinder(h=7+2,d=29);
+}
+
 module BaseBlock(height=60,side=44,chamfer=2) {
+    union() {
+        BaseCube(height=height);
+        BaseStud();
+    }
+}
+
+module MiniPurpleBlock(height=12,side=44,chamfer=2) {
+    color("purple")
     difference() {
-        union() {
-            translate([0,0,height/2])
-            cube([side,side,height], center=true);
-            translate([0,0,-7])
-                cylinder(h=7+2,d=29);
-        }
+        BaseBlock(height=height);
+        TopEntry(height=height);
+    }
+}
+
+module MiniWhiteBlock(height=12) {
+    color("Wheat")
+    difference() {
+        BaseCube(height=height);
+        translate([0,0,-2])
+            cylinder(h=height+4,d=31);
     }
 }
 
@@ -70,10 +93,10 @@ module ExitOrange() {
 }
 
 module ExitSide() {
-        translate([0,0,30])
-        rotate ([60,0,-90])
-            translate([0,0,-30])
-            ExitPart();
+    translate([0,0,30])
+    rotate ([60,0,-90])
+        translate([0,0,-30])
+        ExitPart();
 }
 
 module ExitYellow() {
@@ -217,4 +240,5 @@ module ControlBlock() {
         // orange control knobs
     }
 }
+
 

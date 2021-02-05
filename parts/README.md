@@ -26,8 +26,9 @@ Yellow block
 
 ![blocks render](./blocks.png)
 
-    mini  wood
-    mini  purple
+    MiniPurpleBlock
+    MiniWhiteBlock
+
     BlueBlock
     GreenBlock
     OrangeBlock
@@ -42,13 +43,15 @@ Yellow block
     clacker blue
     clacker white
 
-Ramps
+Bridges
 -----
-Ramps connect between one stack and another. They determine or constrain the distances/placement of the stacks
+Bridges connect between one stack and another. They determine or constrain the distances/placement of the stacks
 
-* semicircle 2
-* semicircle 3
-* s-curve
+![ramps render](./bridges.png)
+
+* Curve2
+* Curve3
+* SCurve
 * spiral
 
 Special
