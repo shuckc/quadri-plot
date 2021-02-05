@@ -1,6 +1,7 @@
 
-BaseBlock();
+ChamferCube();
 translate([0,100,0]) TopEntry();
+translate([0,200,0]) BaseBlock();
 
 translate([100,0,0]) ExitPart();
 translate([200,0,0]) ExitOrange();
@@ -34,9 +35,30 @@ translate([400,0,0]) MiniPurpleBlock();
 translate([400,100,0]) MiniWhiteBlock();
 
 // basic block outer
-module BaseCube(height=60,side=44,chamfer=2) {
-    translate([0,0,height/2])
-        cube([side,side,height], center=true);
+module BaseCube(height=60,side=44) {
+    //translate([0,0,height/2])
+    //    cube([side,side,height], center=true);
+    ChamferCube(height=height,side=side);
+}
+
+
+module chamfer_square(w,h,c=2) {
+    // translate([w/2,0])
+    polygon(points=[[c,0],[w-c,0],[w,c],[w,h-c],[w-c,h],[c,h],[0,h-c],[0,c]]);
+}
+module ChamferCube(height=60,side=44,chamfer=2) {
+    translate([-side/2,-side/2])
+    intersection() {
+    linear_extrude(height=height)
+        chamfer_square(side,side,chamfer);
+    translate([side,0,0])
+    rotate([0,-90,0]) linear_extrude(height=side)
+        chamfer_square(height,side,chamfer);
+
+    translate([0,0,0])
+    rotate([-90,-90,0]) linear_extrude(height=side)
+        chamfer_square(height,side,chamfer);
+    }
 }
 
 module BaseStud() {
@@ -50,7 +72,7 @@ module BaseBlock(height=60,side=44,chamfer=2) {
     }
 }
 
-module MiniPurpleBlock(height=12,side=44,chamfer=2) {
+module MiniPurpleBlock(height=11,side=44,chamfer=2) {
     color("purple")
     difference() {
         BaseBlock(height=height);

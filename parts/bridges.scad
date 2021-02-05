@@ -1,9 +1,13 @@
 
 use <blocks.scad>;
 
-translate([500,200,44]) Curve2();
-translate([500,200,44]) ProjectAlongArc(angle=120) Curve2();
-translate([500,200,44]) ProjectAlongArc(angle=2*120) Curve2();
+translate([500,200,36]) Curve2();
+//translate([500,200,12]) MiniPurpleBlock();
+translate([500,200,24]) MiniPurpleBlock();
+
+
+translate([500,200,36]) ProjectAlongArc(angle=120) Curve2();
+translate([500,200,36]) ProjectAlongArc(angle=2*120) Curve2();
 
 translate([500,200,0]) Curve3();
 translate([500,200,0]) ProjectAlongArc(angle=180) Curve3();
@@ -24,7 +28,7 @@ module CurveSection(angle=60) {
                 rotate([0,0,-5])
                     rotate_extrude(angle=angle+10, convexity=10, $fa=5)
                         translate([230-22, 0, 0])
-                            square([44,12]);
+                            chamfer_square(44,12);
             BaseStud();
             ProjectAlongArc(angle=60) BaseStud();
             if(angle>60)
