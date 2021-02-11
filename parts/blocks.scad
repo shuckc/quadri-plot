@@ -38,6 +38,9 @@ translate([400,200,0]) MiniWhiteBlock() MiniPurpleBlock() GreenBlock() OrangeBlo
 
 translate([400,300,0]) MiniWhiteBlock() GreenBlock() MiniPurpleBlock() RedBlock() BlueBlock() MiniPurpleBlock() OrangeBlock();
 
+translate([400,400,0]) MiniWhiteBlock() TealBlock() ControlBlock() YellowBlock() WhiteBlock() MiniPurpleBlock() OrangeBlock();
+
+
 module MiniUp() {
     translate([0,0,12]) children();
 }
@@ -281,5 +284,10 @@ module ControlBlock() {
         ExitControlBlock();
         // orange control knobs
     }
+    color("orange")
+        rotate([0, 0,90]) translate([22,0,40]) rotate([0, 90,0]) {
+            translate([0,0,3]) cylinder(h=4, r=13);
+            cylinder(h=3, r=4);
+        }
     BlockUp() children();
 }
