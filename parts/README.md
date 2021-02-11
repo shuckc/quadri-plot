@@ -1,6 +1,9 @@
 Quadrilla parts
 ===============
 
+Models for all the parts, as `openscad` objects. The scad files `blocks.scad` can then be imported into a layout.
+
+
 Blocks
 ------
 The shorted 'mini' pieces are grey and purple. Both are square, 12mm high, sides 44mm.
@@ -45,14 +48,14 @@ Yellow block
 
 Bridges
 -----
-Bridges connect between one stack and another. They determine or constrain the distances/placement of the stacks
+Bridges connect between one stack and another. They constrain the distances/placement of the stacks to a hexagonal grid (ie. tellelated equalateral triangles) with 230mm sides. This kind of grid is described precisely at https://www.redblobgames.com/grids/hexagons/. The basic ramps are a series of curve segments with two or three holes. The S-shaped curve spans three lengths in a straight line. The outer holes of the spiral piece fall on the same grid, but introduce a third hole at 185mm from the origin which is not aligned with any other piece.
 
 ![ramps render](./bridges.png)
 
-* Curve2
-* Curve3
-* SCurve
-* spiral
+    Curve2
+    Curve3
+    SCurve
+    spiral
 
 Special
 -------
@@ -61,6 +64,3 @@ Special
 * orange marble catcher
 * flag entry
 * marble - sphere 16.5mm diameter
-
-
-
