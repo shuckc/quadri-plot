@@ -5,7 +5,6 @@ translate([500,200,36]) Curve2();
 //translate([500,200,12]) MiniPurpleBlock();
 translate([500,200,24]) MiniPurpleBlock();
 
-
 translate([500,200,36]) ProjectAlongArc(angle=120) Curve2();
 translate([500,200,36]) ProjectAlongArc(angle=2*120) Curve2();
 
@@ -28,7 +27,7 @@ module CurveSection(angle=60, before=5, after=5) {
                 rotate([0,0,-before])
                     rotate_extrude(angle=angle+before+after, convexity=10, $fa=5)
                         translate([230-22, 0, 0])
-                            chamfer_square(44,12);
+                            chamfer_square(44,11.5);
             BaseStud();
             ProjectAlongArc(angle=60) BaseStud();
             if(angle>60)

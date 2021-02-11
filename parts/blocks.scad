@@ -72,7 +72,7 @@ module BaseBlock(height=60,side=44,chamfer=2) {
     }
 }
 
-module MiniPurpleBlock(height=11,side=44,chamfer=2) {
+module MiniPurpleBlock(height=11.5,side=44,chamfer=2) {
     color("purple")
     difference() {
         BaseBlock(height=height);
@@ -80,7 +80,7 @@ module MiniPurpleBlock(height=11,side=44,chamfer=2) {
     }
 }
 
-module MiniWhiteBlock(height=12) {
+module MiniWhiteBlock(height=11.5) {
     color("Wheat")
     difference() {
         BaseCube(height=height);
