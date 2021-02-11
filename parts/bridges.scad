@@ -1,25 +1,20 @@
 
 use <blocks.scad>;
 
-translate([500,200,36]) Curve2();
-//translate([500,200,12]) MiniPurpleBlock();
-translate([500,200,24]) MiniPurpleBlock();
+translate([000,000,36]) Curve2();
+translate([000,000,12]) MiniPurpleBlock();
+translate([000,000,24]) MiniPurpleBlock();
 
-translate([500,200,36]) ProjectAlongArc(angle=120) Curve2();
-translate([500,200,36]) ProjectAlongArc(angle=2*120) Curve2();
+translate([000,000,36]) ProjectAlongArc(angle=120) Curve2();
+translate([000,000,36]) ProjectAlongArc(angle=2*120) Curve2();
 
-translate([500,200,0]) Curve3();
-translate([500,200,0]) ProjectAlongArc(angle=180) Curve3();
+translate([000,000,0]) Curve3();
+translate([000,000,0]) ProjectAlongArc(angle=180) Curve3();
 
-translate([270,200,88]) SCurve();
+translate([-230,000,88]) SCurve();
 
-translate([1000,0,0]) {
-    // TODO: BUG? using Curve2 doesn't pass children correctly
-    //Curve2(){
-    //    RedBlock() BlueBlock();
-    //    GreenBlock();
-    //};
-    CurveSection(angle=60) {
+translate([500,0,0]) {
+    MiniWhiteBlock() CurveSection(angle=60) {
         RedBlock() BlueBlock();
         GreenBlock() CurveSection(angle=60) {
             OrangeBlock(); WhiteBlock() MiniPurpleBlock();
@@ -27,35 +22,52 @@ translate([1000,0,0]) {
     }
 }
 
-module ProjectAlongArc(angle=60, obj) {
-    translate([-230,0,0])
-        rotate([0,0,angle])
-            translate([230,0,0])
+translate([580,0,0]) {
+    MiniWhiteBlock() CurveSection(angle=60, d=-1) {
+        RedBlock() BlueBlock();
+        GreenBlock() CurveSection(angle=60) {
+            OrangeBlock() CurveSection(angle=60, d=-1) {}
+            ; WhiteBlock() MiniPurpleBlock();
+        };
+    }
+}
+
+module ProjectAlongArc(angle=60, r=230, d=1) {
+    translate([-r*d,0,0])
+        rotate([0,0,d*angle])
+            translate([r*d,0,0])
                 children();
 }
 
-module CurveSection(angle=60, before=5, after=5) {
+module CurveSection(angle=60, before=5, after=5, d=1) {
+    rad=d*230;
+    color("Wheat")
     difference() {
         union() {
-            translate([-230, 0])
-                rotate([0,0,-before])
-                    rotate_extrude(angle=angle+before+after, convexity=10, $fa=5)
-                        translate([230-22, 0, 0])
-                            chamfer_square(44,11.5);
+            translate([-rad, 0])
+                rotate([0,0,-d*before])
+                    rotate_extrude(angle=d*(angle+before+after), convexity=10, $fa=5)
+                        translate([rad, 0, 0])
+                            translate([-22,0,0])
+                            difference() {
+                                chamfer_square(44,11.5);
+                                translate([22-4, 0])
+                                    square([8,12]);
+                            }
             BaseStud();
-            ProjectAlongArc(angle=60) BaseStud();
+            ProjectAlongArc(angle=60, d=d) BaseStud();
             if(angle>60)
-                ProjectAlongArc(angle=1200) BaseStud();
+                ProjectAlongArc(angle=120, d=d) BaseStud();
        }
-       ProjectAlongArc(angle=0) TopEntry(height=12);
-       ProjectAlongArc(angle=60) TopEntry(height=12);
+       ProjectAlongArc(angle=0, d=d) TopEntry(height=12);
+       ProjectAlongArc(angle=60, d=d) TopEntry(height=12);
        if (angle>60)
-            ProjectAlongArc(angle=120) TopEntry(height=12);
+            ProjectAlongArc(angle=120, d=d) TopEntry(height=12);
     };
     MiniUp() {
         if ($children > 0) children(0);
-        if ($children > 1) ProjectAlongArc(angle=60) children(1);
-        if ($children > 2) ProjectAlongArc(angle=120) children(2);
+        if ($children > 1) ProjectAlongArc(angle=60, d=d) children(1);
+        if ($children > 2) ProjectAlongArc(angle=120, d=d) children(2);
     };
 }
 
