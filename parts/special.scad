@@ -1,8 +1,6 @@
 use <blocks.scad>;
 
-
-translate([0,0,0]) MiniWhiteBlock() BlueBlock();
-MarbleCatcher();
+MarbleCatcher() MiniWhiteBlock() BlueBlock();
 
 module MarbleCatcher() {
     color("orange")
@@ -12,6 +10,16 @@ module MarbleCatcher() {
             chamfer_square(4,20, c=1);
         translate([0,0,4])
         cylinder(h=t, r=50);
-   }
+        translate([-75,23,0])
+            rotate([90,0,90])
+                linear_extrude(height=30)
+                    chamfer_square(4,20, c=1);
+        translate([-75,-27,0])
+                    rotate([90,0,90])
+                        linear_extrude(height=30)
+                            chamfer_square(4,20, c=1);
+
+   };
+   children();
 }
 
