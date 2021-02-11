@@ -21,12 +21,12 @@ module ProjectAlongArc(angle=60, obj) {
                 children();
 }
 
-module CurveSection(angle=60) {
+module CurveSection(angle=60, before=5, after=5) {
     difference() {
         union() {
             translate([-230, 0])
-                rotate([0,0,-5])
-                    rotate_extrude(angle=angle+10, convexity=10, $fa=5)
+                rotate([0,0,-before])
+                    rotate_extrude(angle=angle+before+after, convexity=10, $fa=5)
                         translate([230-22, 0, 0])
                             chamfer_square(44,12);
             BaseStud();
@@ -43,9 +43,9 @@ module CurveSection(angle=60) {
 
 module SCurve() {
     union() {
-        CurveSection(angle=60);
+        CurveSection(angle=60, before=0);
         rotate([0,0,180])
-            CurveSection(angle=60);
+            CurveSection(angle=60, before=0);
     }
 }
 
