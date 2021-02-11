@@ -34,13 +34,24 @@ translate([300,700,0]) ControlBlock();
 translate([400,0,0]) MiniPurpleBlock();
 translate([400,100,0]) MiniWhiteBlock();
 
+translate([400,200,0]) MiniWhiteBlock() MiniPurpleBlock() GreenBlock() OrangeBlock();
+
+translate([400,300,0]) MiniWhiteBlock() GreenBlock() MiniPurpleBlock() RedBlock() BlueBlock() MiniPurpleBlock() OrangeBlock();
+
+module MiniUp() {
+    translate([0,0,12]) children();
+}
+
+module BlockUp() {
+    translate([0,0,12*5]) children();
+}
+
 // basic block outer
 module BaseCube(height=60,side=44) {
     //translate([0,0,height/2])
     //    cube([side,side,height], center=true);
     ChamferCube(height=height,side=side);
 }
-
 
 module chamfer_square(w,h,c=2) {
     // translate([w/2,0])
@@ -78,6 +89,7 @@ module MiniPurpleBlock(height=11.5,side=44,chamfer=2) {
         BaseBlock(height=height);
         TopEntry(height=height);
     }
+    MiniUp() children();
 }
 
 module MiniWhiteBlock(height=11.5) {
@@ -87,6 +99,7 @@ module MiniWhiteBlock(height=11.5) {
         translate([0,0,-2])
             cylinder(h=height+4,d=31);
     }
+    MiniUp() children();
 }
 
 module TopEntry(height=60) {
@@ -134,6 +147,7 @@ module OrangeBlock() {
         BaseBlock();
         ExitOrange();
     }
+    BlockUp() children();
 }
 
 module ExitAcross() {
@@ -167,6 +181,7 @@ module WhiteBlock() {
         BaseBlock();
         ExitWhite();
     }
+    BlockUp() children();
 }
 
 module YellowBlock() {
@@ -175,6 +190,7 @@ module YellowBlock() {
         BaseBlock();
         ExitYellow();
     }
+    BlockUp() children();
 }
 
 module ExitSides() {
@@ -197,6 +213,7 @@ module RedBlock() {
         BaseBlock();
         ExitRed();
     }
+    BlockUp() children();
 }
 
 module ExitBottom() {
@@ -217,6 +234,7 @@ module BlueBlock() {
         BaseBlock();
         ExitBlue();
     }
+    BlockUp() children();
 }
 
 module ExitGreen() {
@@ -232,6 +250,7 @@ module GreenBlock() {
         BaseBlock();
         ExitGreen();
     }
+    BlockUp() children();
 }
 
 module ExitTeal() {
@@ -246,6 +265,7 @@ module TealBlock() {
         BaseBlock();
         ExitTeal();
     }
+    BlockUp() children();
 }
 
 module ExitControlBlock() {
@@ -261,6 +281,5 @@ module ControlBlock() {
         ExitControlBlock();
         // orange control knobs
     }
+    BlockUp() children();
 }
-
-

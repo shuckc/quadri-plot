@@ -13,6 +13,20 @@ translate([500,200,0]) ProjectAlongArc(angle=180) Curve3();
 
 translate([270,200,88]) SCurve();
 
+translate([1000,0,0]) {
+    // TODO: BUG? using Curve2 doesn't pass children correctly
+    //Curve2(){
+    //    RedBlock() BlueBlock();
+    //    GreenBlock();
+    //};
+    CurveSection(angle=60) {
+        RedBlock() BlueBlock();
+        GreenBlock() CurveSection(angle=60) {
+            OrangeBlock(); WhiteBlock() MiniPurpleBlock();
+        };
+    }
+}
+
 module ProjectAlongArc(angle=60, obj) {
     translate([-230,0,0])
         rotate([0,0,angle])
@@ -37,7 +51,12 @@ module CurveSection(angle=60, before=5, after=5) {
        ProjectAlongArc(angle=60) TopEntry(height=12);
        if (angle>60)
             ProjectAlongArc(angle=120) TopEntry(height=12);
-    }
+    };
+    MiniUp() {
+        if ($children > 0) children(0);
+        if ($children > 1) ProjectAlongArc(angle=60) children(1);
+        if ($children > 2) ProjectAlongArc(angle=120) children(2);
+    };
 }
 
 module SCurve() {
@@ -49,9 +68,9 @@ module SCurve() {
 }
 
 module Curve2() {
-    CurveSection(angle=60);
+    CurveSection(angle=60) children();
 }
 
 module Curve3() {
-    CurveSection(angle=120);
+    CurveSection(angle=120) children();
 }
