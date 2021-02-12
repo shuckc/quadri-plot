@@ -39,17 +39,15 @@ $ openscad parts/demo.scad -o demo.png --imgsize 2048,2048 --view=axes --viewall
 
 There is a tradition of rendering openscad models oversize and shrinking after exporting to anti-alias.
 
-You can also export a 3D STL model (slowly!) using `-o output.stl` which github can preview [demo render in 3D](./parts/demo.stl) although STL loses the colouring information.
+You can also export a 3D STL model (slowly!) using `-o output.stl` which github can [render in interactive 3D](./parts/demo.stl) although STL format loses the colouring information.
 
-See [parts](./parts/) for the naming and examples of components.
+See [parts](./parts/) for the naming of components.
 
 Aims
 ====
 * Finish the missing parts
-* Some sort of descriptive language to generate above, see [/designs](/.designs)
+* Some sort of descriptive language to generate above, see [/designs](./designs)
 * Layout checker/drc description -> drc -> openscad -> png / pdf / stl
 * Embed 3D views with https://www.viewstl.com/
-* Github can render stl format, see [demo in 3D](./parts/demo.stl)
 * Generate sequenced instruction booklet style, showing steps to build
-
 

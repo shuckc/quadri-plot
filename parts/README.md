@@ -59,8 +59,10 @@ Bridges connect between one stack and another. They constrain the distances/plac
 
 Special
 -------
+![special parts render](./special.png)
+
+* MarbleCatcher()
 * musical staircase
 * musical cylinder staircase
-* orange marble catcher
 * flag entry
 * marble - sphere 16.5mm diameter
