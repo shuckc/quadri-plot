@@ -1,5 +1,5 @@
 
-Some [openscad](https://www.openscad.org/) code code to plot layouts for the [Quadrilla marble run](https://www.hape.com/us/en/wooden-toys/quadrilla) toy:
+Some [openscad](https://www.openscad.org/) code to plot layouts for the [Quadrilla marble run](https://www.hape.com/us/en/wooden-toys/quadrilla) toy:
 
 ![demo render](./parts/demo.png)
 
