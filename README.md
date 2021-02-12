@@ -3,6 +3,8 @@ Some [openscad](https://www.openscad.org/) code code to plot layouts for the [Qu
 
 ![demo render](./parts/demo.png)
 
+Generated from the folllowing openscad file:
+
 ```python
 use <blocks.scad>;
 use <bridges.scad>;
@@ -26,17 +28,18 @@ RZ(-90) {
 MarbleCatcher();
 
 ```
-
-Can be generated with
+And can be rendered like this:
 
 ```
 $ brew install openscad
+$ git clone https://github.com/shuckc/quadri-plot.git
+$ cd quadri-plot
 $ openscad parts/demo.scad -o demo.png --imgsize 2048,2048 --view=axes --viewall --autocenter
 ```
-It seems traditional to shrink the image after exporting to anti-alias.
-You can also export a 3D STL model (slowly!) using `-o output.stl` which looks like [demo render](./parts/demo.stl).
 
-![demo render](./parts/demo.stl)
+There is a tradition of rendering openscad models oversize and shrinking after exporting to anti-alias.
+
+You can also export a 3D STL model (slowly!) using `-o output.stl` which github can preview [demo render in 3D](./parts/demo.stl) although STL loses the colouring information.
 
 See [parts](./parts/) for the naming and examples of components.
 
