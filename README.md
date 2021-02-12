@@ -33,6 +33,10 @@ Can be generated with
 $ brew install openscad
 $ openscad parts/demo.scad -o demo.png --imgsize 2048,2048 --view=axes --viewall --autocenter
 ```
+It seems traditional to shrink the image after exporting to anti-alias.
+You can also export a 3D STL model (slowly!) using `-o output.stl` which looks like [demo render](./parts/demo.stl).
+
+![demo render](./parts/demo.stl)
 
 See [parts](./parts/) for the naming and examples of components.
 
