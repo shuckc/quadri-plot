@@ -1,4 +1,6 @@
 
+use <base.scad>;
+
 ChamferCube();
 translate([0,100,0]) TopEntry();
 translate([0,200,0]) BaseBlock();
@@ -39,15 +41,6 @@ translate([400,200,0]) MiniWhiteBlock() MiniPurpleBlock() GreenBlock() OrangeBlo
 translate([400,300,0]) MiniWhiteBlock() GreenBlock() MiniPurpleBlock() RedBlock() BlueBlock() MiniPurpleBlock() OrangeBlock();
 
 translate([400,400,0]) MiniWhiteBlock() TealBlock() ControlBlock() YellowBlock() WhiteBlock() MiniPurpleBlock() OrangeBlock();
-
-
-module MiniUp() {
-    translate([0,0,12]) children();
-}
-
-module BlockUp() {
-    translate([0,0,12*5]) children();
-}
 
 // basic block outer
 module BaseCube(height=60,side=44) {

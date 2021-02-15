@@ -32,13 +32,6 @@ translate([580,0,0]) {
     }
 }
 
-module ProjectAlongArc(angle=60, r=230, d=1) {
-    translate([-r*d,0,0])
-        rotate([0,0,d*angle])
-            translate([r*d,0,0])
-                children();
-}
-
 module CurveSection(angle=60, before=5, after=5, d=1) {
     rad=d*230;
     color("Wheat")
