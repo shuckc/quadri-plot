@@ -123,9 +123,9 @@ module ExitOrange() {
     }
 }
 
-module ExitSide() {
+module ExitSide(theta=60) {
     translate([0,0,30])
-    rotate ([60,0,-90])
+    rotate ([theta,0,-90])
         translate([0,0,-30])
         ExitPart();
 }
