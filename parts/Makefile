@@ -3,7 +3,7 @@ FLAGS=--imgsize 2048,2048 --view=axes --viewall --autocenter
 
 PNGS=$(patsubst %.scad,%.png,$(wildcard *.scad))
 
-_%.png : %.scad .options
+_%.png : %.scad
 	openscad -o $@ $(FLAGS) $<
 
 %.stl : %.scad .options
